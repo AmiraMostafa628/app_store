@@ -10,14 +10,13 @@ class RegisterViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional.topCenter,
       children: [
         Stack(
-          alignment: AlignmentDirectional.bottomCenter,
+          alignment: Alignment.bottomCenter,
           children: [
             const BackgroundImageLogin(),
-            AspectRatio(
-              aspectRatio: 4/2.3,
+            SizedBox(
+              height: MediaQuery.of(context).size.height *.6,
               child: Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -30,11 +29,9 @@ class RegisterViewBody extends StatelessWidget {
 
           ],
         ),
-         SignInUpInfo(
-           signInUpDetails: RegisterDetails(),
-           aspectRatio: 2/3.2,
-           height: .58,
-         ),
+        Align(
+            alignment: Alignment.center,
+            child: RegisterDetails()),
 
       ],
     );

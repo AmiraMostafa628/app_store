@@ -10,14 +10,13 @@ class LoginViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional.topCenter,
       children: [
         Stack(
-          alignment: AlignmentDirectional.bottomCenter,
+          alignment: Alignment.bottomCenter,
           children: [
             const BackgroundImageLogin(),
-            AspectRatio(
-              aspectRatio: 4/2.1,
+            SizedBox(
+              height: MediaQuery.of(context).size.height *.6,
               child: Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -27,17 +26,14 @@ class LoginViewBody extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
-        SignInUpInfo(
-          signInUpDetails: LoginDetails(),
-          aspectRatio: 2/2.8,
-          height: .42,
-        ),
-
+        Align(
+            alignment: Alignment.center,
+            child: LoginDetails()),
       ],
     );
+
 
   }
 }

@@ -6,7 +6,8 @@ class BackgroundImageLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children:[
+    return Stack(
+        children:[
       Container(
         decoration: const BoxDecoration(
           color: Colors.transparent,
@@ -17,10 +18,8 @@ class BackgroundImageLogin extends StatelessWidget {
             ),
           ),
         ),
-        height: 300.0,
       ),
       Container(
-        height: 360.0,
         decoration: BoxDecoration(
             color: Colors.white,
             gradient: LinearGradient(

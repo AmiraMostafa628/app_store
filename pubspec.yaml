@@ -54,6 +54,7 @@ dependencies:
 
 
 
+
 dev_dependencies:
   retrofit_generator: ^4.0.1
   build_runner: ^2.3.3
