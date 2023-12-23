@@ -1,6 +1,5 @@
 import 'package:app_store/core/utils/values_manager.dart';
 import 'package:app_store/core/widgets/custom_background_image.dart';
-import 'package:app_store/core/widgets/sign_in_up_info.dart';
 import 'package:app_store/features/register/presentation/view/widget/register_details.dart';
 import 'package:flutter/material.dart';
 

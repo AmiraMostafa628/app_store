@@ -40,138 +40,140 @@ class LoginDetails extends StatelessWidget {
       },
         builder: (context,state){
           var cubit = LoginCubit.get(context);
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(AppPadding.p20),
-                child: Container(
-                  decoration:  BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xff000000).withOpacity(.25),
-                        blurRadius: 20, // Shadow position
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(AppSize.s30),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: AppPadding.p20),
-                    child: Form(
-                      key: formKey,
-                      child: IntrinsicHeight(
-                        child: Column(
-                          children: [
-                            const Text(
-                              'Welcome',
-                              style: Styles.testStyle22,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: AppPadding.p10),
-                              child: Container(
-                                height: 2,
-                                width: MediaQuery.of(context).size.width *.3,
-                                color: const Color(0xff0062BD),
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(AppPadding.p20),
+                  child: Container(
+                    decoration:  BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xff000000).withOpacity(.25),
+                          blurRadius: 20, // Shadow position
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(AppSize.s30),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: AppPadding.p20),
+                      child: Form(
+                        key: formKey,
+                        child: IntrinsicHeight(
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Welcome',
+                                style: Styles.testStyle22,
                               ),
-                            ),
-                            const SizedBox(height: AppSize.s6,),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20 ),
-                              child: SizedBox(
-                                  height: AppSize.s40,
-                                  child: CustomTextFormField(
-                                    controller: emailController,
-                                    type: TextInputType.emailAddress,
-                                    text: 'Email Address',
-                                    validate: (String value){
-                                      if(value.isEmpty)
-                                      {
-                                        return 'Email Can\'t be Empty';
-                                      }
-                                    },
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: AppPadding.p10),
+                                child: Container(
+                                  height: 2,
+                                  width: MediaQuery.of(context).size.width *.3,
+                                  color: const Color(0xff0062BD),
+                                ),
+                              ),
+                              const SizedBox(height: AppSize.s6,),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20 ),
+                                child: SizedBox(
+                                    height: AppSize.s40,
+                                    child: CustomTextFormField(
+                                      controller: emailController,
+                                      type: TextInputType.emailAddress,
+                                      text: 'Email Address',
+                                      validate: (String value){
+                                        if(value.isEmpty)
+                                        {
+                                          return 'Email Can\'t be Empty';
+                                        }
+                                      },
 
-                                  )),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: AppPadding.p10,
-                                  horizontal: AppPadding.p20 ),
-                              child: SizedBox(
-                                  height: AppSize.s40,
-                                  child: CustomTextFormField(
-                                    controller: passwordController,
-                                    type: TextInputType.visiblePassword,
-                                    isPassword: cubit.isPassword,
-                                    text: 'Password',
-                                    suffixIcon: cubit.suffix,
-                                    suffixPressed: (){
-                                      cubit.changePasswordVisibility();
-                                    },
-                                    validate: (String value){
-                                      if(value.isEmpty)
-                                      {
-                                        return 'password Can\'t be Empty';
-                                      }
-                                    },
-                                  )),
-                            ),
-                            const SizedBox(
-                              height: AppSize.s10,
-                            ),
-                            CustomButton(
-                              textColor: Colors.white,
-                              text: 'Login',
-                              width: MediaQuery.of(context).size.width * .65,
-                              onPressed: (){
-                                if(formKey.currentState!.validate()) {
-                                  cubit.fetchLoginData(
-                                      email: emailController.text,
-                                      password: passwordController.text
-                                  );
-                                }
-                              },
-                            ),
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: AppPadding.p10,
+                                    horizontal: AppPadding.p20 ),
+                                child: SizedBox(
+                                    height: AppSize.s40,
+                                    child: CustomTextFormField(
+                                      controller: passwordController,
+                                      type: TextInputType.visiblePassword,
+                                      isPassword: cubit.isPassword,
+                                      text: 'Password',
+                                      suffixIcon: cubit.suffix,
+                                      suffixPressed: (){
+                                        cubit.changePasswordVisibility();
+                                      },
+                                      validate: (String value){
+                                        if(value.isEmpty)
+                                        {
+                                          return 'password Can\'t be Empty';
+                                        }
+                                      },
+                                    )),
+                              ),
+                              const SizedBox(
+                                height: AppSize.s10,
+                              ),
+                              CustomButton(
+                                textColor: Colors.white,
+                                text: 'Login',
+                                width: MediaQuery.of(context).size.width * .65,
+                                onPressed: (){
+                                  if(formKey.currentState!.validate()) {
+                                    cubit.fetchLoginData(
+                                        email: emailController.text,
+                                        password: passwordController.text
+                                    );
+                                  }
+                                },
+                              ),
 
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: AppPadding.p14),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Don\'t have an account ?',
-                                    style: Styles.testStyle10,
-                                  ),
-                                  TextButton(
-                                    onPressed: (){
-                                      GoRouter.of(context).push(AppRouter.kRegister);
-                                    },
-                                    child: const Text(
-                                      'Sign Up',
-                                      style: Styles.testStyle14,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: AppPadding.p14),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text('Don\'t have an account ?',
+                                      style: Styles.testStyle10,
                                     ),
+                                    TextButton(
+                                      onPressed: (){
+                                        GoRouter.of(context).push(AppRouter.kRegister);
+                                      },
+                                      child: const Text(
+                                        'Sign Up',
+                                        style: Styles.testStyle14,
+                                      ),
 
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
 
 
 
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: AppSize.s20,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p25),
-                child: Image.asset(AssetsManager.or),
-              ),
-              const SizedBox(height: AppSize.s20,),
-              const LogoWidget(),
-            ],
+                const SizedBox(height: AppSize.s20,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppPadding.p25),
+                  child: Image.asset(AssetsManager.or),
+                ),
+                const SizedBox(height: AppSize.s20,),
+                const LogoWidget(),
+              ],
+            ),
           );
         });
   }
